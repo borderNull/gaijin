@@ -145,8 +145,55 @@ html {
 
 .modal-gallery {
   display: none;
-  background: rgba(0,0,0, .3);
+  background: rgba(0,0,0, .7);
   z-index: 9999;
+  position: absolute;
+  height: 100%;
+}
+
+.modal__close {
+  background-image: url("./assets/images/close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #fff;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.modal__next {
+  background-image: url("./assets/images/chevron_right.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #fff;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.modal__prev {
+  background-image: url("./assets/images/chevron_left.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #fff;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.modal__image {
+  width: 80%;
+  margin: 100px auto auto auto;
+  display: block;
 }
 
 .logo {
@@ -282,6 +329,9 @@ html {
       margin-right: 0;
     }
     &:hover {
+      border: 3px solid #eeb745;
+    }
+    &.active {
       border: 3px solid #eeb745;
     }
   }
