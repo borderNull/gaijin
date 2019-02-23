@@ -1,10 +1,6 @@
 import 'normalize.css'; 
 import './style.scss';
-// import fullpage from "fullpage.js"
-// import Headroom from "headroom.js"
-// import { TweenMax,  } from 'gsap/TweenMax';
-// import { TimelineMax } from 'gsap/Timeline';
-// // import Icon from './icon.jpg';
+
 
 const isMobile = document.body.clientWidth >= 1024 ? '0' : '70px';
 // const menu = document.querySelector('.header-sticky');
@@ -12,14 +8,13 @@ const isMobile = document.body.clientWidth >= 1024 ? '0' : '70px';
 console.log('isMobile', isMobile);
 
 
-
-
-const linksContainer = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
 const galleryLinks = document.querySelectorAll('.gallery-item');
 const modalGallery = document.querySelector('.modal-gallery');
-const gallery = document.querySelector('.gallery');
 const modalImage = document.querySelector('.modal__image');
 const modalClose = document.querySelector('.modal__close');
+let modalNext = document.querySelector('.modal__next');
+let modalPrev = document.querySelector('.modal__prev');
 const offer = document.querySelector('.offer');
 const planeType = document.querySelector('.plane-type');
 const planeName = document.querySelector('.plane-name');
@@ -32,10 +27,8 @@ const langsContainer = document.querySelector('.lang');
 const langs = {
     ru: {
         offer: 'Выбери свой <span class="offer__yellow">бесплатный</span> бонус',
-        giftText: '3 дня премиум аккаунта',
+        giftText: '+ 3 дня премиум аккаунта',
         choose: 'или',
-        // tank: 'Т-26 (1.ГВ. Т. БР.)',
-        // plane: 'Чайка Жуковского И-153 М-62',
         media: 'Видео и скриншоты',
         tankType: '(1.ГВ. Т. БР.)',
         tankName: 'Т-26',
@@ -46,7 +39,7 @@ const langs = {
     },
     tr: {
         offer: 'Ücretsiz <span class="offer__yellow">bonusunuzu</span> seçin',
-        giftText: '3 gün Premium hesap süresi',
+        giftText: '+ 3 gün Premium hesap süresi',
         choose: 'ya da',
         tankType: 'Light tank',
         tankName:  'M2A4',
@@ -57,6 +50,20 @@ const langs = {
     }
 }
 
+
+
+
+langsContainer.addEventListener('click', e => switchLang(e));
+
+modalClose.addEventListener('click', () => {
+    modalGallery.style.display = 'none';
+    clearStatus();
+    gallery.classList.remove('modal');
+})
+
+gallery.addEventListener('click', e => setImage(e));
+modalNext.addEventListener('click', e => setImage(e));
+modalPrev.addEventListener('click', e => setImage(e));
 
 function switchLang(element) {
 
@@ -76,50 +83,48 @@ function switchLang(element) {
     header.src = require(`${selectedLang.header}`);
     giftText.forEach(text => text.innerHTML = selectedLang.giftText);
 
-}
+  }
 
-langsContainer.addEventListener('click', e => switchLang(e));
 
-modalClose.addEventListener('click', e => {
-    modalGallery.style.display = 'none';
-    clearStatus();
-    gallery.classList.remove('modal');
-})
-
-linksContainer.addEventListener('click', e => {
-    console.log('e container', e)
-    const path = e.target.dataset.image;
+function setImage(el) {
+    const currentIndex = +el.target.dataset.index;
+    const path = galleryLinks[currentIndex].dataset.image;;
 
     clearStatus();
-
-    e.target.classList.add('active');
-    
-
-    console.log(modalGallery.classList.contains('modal'))
-    console.log(offer)
-    console.log(modalGallery.classList)
+    galleryLinks[currentIndex].classList.add('active');
 
     if (!gallery.classList.contains('modal')) {
-        gallery.classList.add('modal');
+      gallery.classList.add('modal');
     }
 
-    // if (modalGallery.style.display === 'none') {
-    //     // gallery.classList.add('modal');
-    // }
-    modalGallery.style.display = 'block';
+    if (modalGallery.style.display == 'none' || !modalGallery.style.display){
+      modalGallery.style.display = 'block';
+    }
 
+    checkNext(currentIndex);
+    checkPrev(currentIndex);
     modalImage.src = require(`./assets/images/gallery/${path}`);
-})
+  }
 
-
-function showModal(item) {
-    item.target.preventDefault();
-
-    console.log('item', item);
-}
 
 function clearStatus() {
     galleryLinks.forEach(link => {
         link.classList.remove('active')
     })
-}
+  }
+
+function checkNext(index) {
+    if (index === galleryLinks.length - 1) {
+        modalNext.dataset.index = 0;
+    } else {
+        modalNext.dataset.index = ++index;
+    }
+  }
+
+function checkPrev(index) {
+    if (index === 0) {
+        modalPrev.dataset.index = galleryLinks.length - 1;
+    } else {
+        modalPrev.dataset.index = --index;
+    }
+  }

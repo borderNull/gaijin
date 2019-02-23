@@ -11,40 +11,39 @@ html
       img.lang__image(src=require("./assets/images/flag_of_russia.png"), data-lang="ru")
     div.modal-gallery
       div.modal__close
-        //- img.modal__close-image(src=require("./assets/images/"))
       div.modal__prev
       div.modal__next
       img.modal__image(src=require("./assets/images/gallery/1-big.jpg"))
     img.logo(src=require("./assets/images/logo_classic.png"))
     img.header(src=require("./assets/images/headers/header_ru.png"))
-    img.tower(src=require("./assets/images/tank_tower.png"))
+    div.tower
     p.offer 
-      |choose your 
-      span.offer__yellow free 
-      |bonus
+      |выбери свой
+      span.offer__yellow бесплатный
+      |бонус
     div.gifts
       div.gifts-item
         div.gifts-item-content
-          p.gifts-item-content__type.plane-type thACH’S 
-          p.gifts-item-content__name.plane-name F2A-1 Buffalo
-          p.gifts-item-content__text + 3 day premium account
+          p.gifts-item-content__type.plane-type Чайка Жуковского
+          p.gifts-item-content__name.plane-name И-153 М-62
+          p.gifts-item-content__text + 3 дня премиум аккаунта
         img.gifts-item__image.left-image(src=require("./assets/images/-e-f2a-1-buffalo.png"))
       div.gifts-choose
-        p.gifts-choose__text or
+        p.gifts-choose__text или
       div.gifts-item
         div.gifts-item-content
-          p.gifts-item-content__type.tank-type Light tank
-          p.gifts-item-content__name.tank-name M2A4
-          p.gifts-item-content__text + 3 day premium account
+          p.gifts-item-content__type.tank-type (1.ГВ. Т. БР.)
+          p.gifts-item-content__name.tank-name Т-26
+          p.gifts-item-content__text + 3 дня премиум аккаунта
         img.gifts-item__image.right-image(src=require("./assets/images/light-tank-m2a4.png"))
     div.gallery
-      a.gallery-item(href="#" data-image="1-big.jpg")
-      a.gallery-item(href="#" data-image="2-big.jpg")
-      a.gallery-item(href="#" data-image="3-big.jpg")
-      a.gallery-item(href="#" data-image="1-big.jpg")
-      a.gallery-item(href="#" data-image="2-big.jpg")
-      a.gallery-item(href="#" data-image="3-big.jpg")
-      a.gallery-item(href="#" data-image="1-big.jpg")
+      a.gallery-item(href="#" data-image="1-big.jpg" data-index="0")
+      a.gallery-item(href="#" data-image="2-big.jpg" data-index="1")
+      a.gallery-item(href="#" data-image="3-big.jpg" data-index="2")
+      a.gallery-item(href="#" data-image="1-big.jpg" data-index="3")
+      a.gallery-item(href="#" data-image="2-big.jpg" data-index="4")
+      a.gallery-item(href="#" data-image="3-big.jpg" data-index="5")
+      a.gallery-item(href="#" data-image="2-big.jpg" data-index="6")
     div.footer
       a.footer__link(href="#") Privacy Policy
       a.footer__link(href="#") EULA
@@ -52,8 +51,3 @@ html
       a.footer__link(href="#") Customer Support
     img.bottom-logo(src=require("./assets/images/-e-gaijin_logo.png"))
     img.bottom-rate(src=require("./assets/images/-e-pegi.png"))
-    
-
-      
-
-      
