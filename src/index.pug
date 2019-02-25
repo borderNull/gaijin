@@ -17,7 +17,7 @@ html
     img.logo(src=require("./assets/images/logo_classic.png"))
     img.header(src=require("./assets/images/headers/header_ru.png"))
     div.tower
-    p.offer 
+    p.offer
       |выбери свой
       span.offer__yellow бесплатный
       |бонус
@@ -36,14 +36,23 @@ html
           p.gifts-item-content__name.tank-name Т-26
           p.gifts-item-content__text + 3 дня премиум аккаунта
         img.gifts-item__image.right-image(src=require("./assets/images/light-tank-m2a4.png"))
+    p.gallery__title Видео и скриншоты
     div.gallery
-      a.gallery-item(href="#" data-image="1-big.jpg" data-index="0")
+      a.gallery-item.video-link(href="#" data-image="1-big.jpg" data-index="0")
       a.gallery-item(href="#" data-image="2-big.jpg" data-index="1")
       a.gallery-item(href="#" data-image="3-big.jpg" data-index="2")
       a.gallery-item(href="#" data-image="1-big.jpg" data-index="3")
       a.gallery-item(href="#" data-image="2-big.jpg" data-index="4")
       a.gallery-item(href="#" data-image="3-big.jpg" data-index="5")
       a.gallery-item(href="#" data-image="2-big.jpg" data-index="6")
+    div.gallery-mobile
+      a.gallery-mobile-item.video-link(href="#" data-image="1-big.jpg" data-index="0")
+      a.gallery-mobile-item(href="#" data-image="2-big.jpg" data-index="1")
+      a.gallery-mobile-item(href="#" data-image="3-big.jpg" data-index="2")
+      a.gallery-mobile-item(href="#" data-image="1-big.jpg" data-index="3")
+      a.gallery-mobile-item(href="#" data-image="2-big.jpg" data-index="4")
+      a.gallery-mobile-item(href="#" data-image="3-big.jpg" data-index="5")
+      a.gallery-mobile-item(href="#" data-image="2-big.jpg" data-index="6")
     div.footer
       a.footer__link(href="#") Privacy Policy
       a.footer__link(href="#") EULA

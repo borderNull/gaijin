@@ -2,14 +2,17 @@ import 'normalize.css';
 import './style.scss';
 
 
-const isMobile = document.body.clientWidth >= 1024 ? '0' : '70px';
+// const isMobile = document.body.clientWidth >= 1024;
 // const menu = document.querySelector('.header-sticky');
 
-console.log('isMobile', isMobile);
+// console.log('isMobile', isMobile);
 
 
 const gallery = document.querySelector('.gallery');
 const galleryLinks = document.querySelectorAll('.gallery-item');
+const mobileGallery = document.querySelector('.gallery-mobile');
+const mobileGalleryLinks = document.querySelectorAll('.gallery-mobile-item');
+const mobileGalleryTitle = document.querySelector('.gallery__title');
 const modalGallery = document.querySelector('.modal-gallery');
 const modalImage = document.querySelector('.modal__image');
 const modalClose = document.querySelector('.modal__close');
@@ -35,6 +38,7 @@ const langs = {
         planeName: 'И-153 М-62',
         planeType: 'Чайка Жуковского',
         header: './assets/images/headers/header_ru.png',
+        mobileHeader: './assets/images/headers/header_ru_m.png',
         
     },
     tr: {
@@ -47,10 +51,33 @@ const langs = {
         planeType: 'Thach’s',
         media: 'Video & Ekran Görüntüleri',
         header: './assets/images/headers/header_tr.png',
+        mobileHeader: './assets/images/headers/header_tr_m.png',
     }
 }
+let currentLang = 'ru';
+let isMobile = document.body.clientWidth < 1024;
+
+window.addEventListener('resize', e => {
+  const isMobileResized = document.body.clientWidth < 1024;
 
 
+  if (isMobileResized) {
+    header.src = require(`${langs[currentLang].mobileHeader}`);
+  } else {
+    header.src = require(`${langs[currentLang].header}`);
+  }
+
+  isMobile = isMobileResized;
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+  console.log('isMobile', isMobile);
+
+  if (isMobile) {
+    header.src = require(`${langs[currentLang].mobileHeader}`);
+    // mobileGalleryTitle = langs[currentLang].media;
+  }
+})
 
 
 langsContainer.addEventListener('click', e => switchLang(e));
@@ -59,6 +86,7 @@ modalClose.addEventListener('click', () => {
     modalGallery.style.display = 'none';
     clearStatus();
     gallery.classList.remove('modal');
+    mobileGallery.classList.remove('modal');
 })
 
 gallery.addEventListener('click', e => setImage(e));
@@ -66,13 +94,10 @@ modalNext.addEventListener('click', e => setImage(e));
 modalPrev.addEventListener('click', e => setImage(e));
 
 function switchLang(element) {
-
     const target = element.target;
     const lang = target.dataset.lang;
     const selectedLang = langs[lang];
-
-    console.log('target', giftText);
-    console.log('tr', selectedLang.offer);
+    currentLang = lang;
 
     planeName.innerHTML = selectedLang.planeName;
     planeType.innerHTML = selectedLang.planeType;
@@ -80,7 +105,13 @@ function switchLang(element) {
     tankType.innerHTML = selectedLang.tankType;
     choose.innerHTML = selectedLang.choose;
     offer.innerHTML = selectedLang.offer;
-    header.src = require(`${selectedLang.header}`);
+
+    if (isMobile) {
+      header.src = require(`${selectedLang.mobileHeader}`);
+      mobileGalleryTitle.innerHTML = selectedLang.media;
+    } else {
+      header.src = require(`${selectedLang.header}`);
+    }
     giftText.forEach(text => text.innerHTML = selectedLang.giftText);
 
   }
@@ -88,10 +119,11 @@ function switchLang(element) {
 
 function setImage(el) {
     const currentIndex = +el.target.dataset.index;
-    const path = galleryLinks[currentIndex].dataset.image;;
+    const path = galleryLinks[currentIndex].dataset.image;
 
     clearStatus();
     galleryLinks[currentIndex].classList.add('active');
+    mobileGalleryLinks[currentIndex].classList.add('active');
 
     if (!gallery.classList.contains('modal')) {
       gallery.classList.add('modal');
@@ -101,6 +133,10 @@ function setImage(el) {
       modalGallery.style.display = 'block';
     }
 
+    if (isMobile) {
+      mobileGallery.classList.add('modal');
+    }
+
     checkNext(currentIndex);
     checkPrev(currentIndex);
     modalImage.src = require(`./assets/images/gallery/${path}`);
@@ -108,8 +144,13 @@ function setImage(el) {
 
 
 function clearStatus() {
+
     galleryLinks.forEach(link => {
         link.classList.remove('active')
+    })
+
+    mobileGalleryLinks.forEach(link => {
+      link.classList.remove('active');
     })
   }
 
