@@ -8,3 +8,5 @@ test task
 * npm i or yarn
 * npm run start
 * open localhost:8080 at browser 
+* or open /dist file index.html 
+
