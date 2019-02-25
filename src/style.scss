@@ -1,100 +1,24 @@
-// @import './assets/fonts/LatoBold.ttf';
 @import './fonts.scss';
 
-// @font-face {
-//     font-family: 'Rubik One';
-//     src: url('./assets/fonts/RubikOne.ttf') format('truetype');
-
-// }
-
-// @font-face {
-//     font-family: 'Lato-Bold';
-//     src: url('./assets/fonts/LatoBold.ttf') format('truetype');
-// }
-
-// @font-face {
-//     font-family: 'Lato-Black';
-//     src: url('./assets/fonts/Lato-Black.ttf') format('truetype');
-// }
-
 @font-face {
-    font-family: 'Roboto-Regular';
-    src: url('./assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-family: 'FiraSansMedium';
+  src: url('./assets/fonts/FiraSans-Medium.otf');
 }
 
 @font-face {
-    font-family: 'Roboto-Medium';
-    src: url('./assets/fonts/Roboto-Medium.ttf') format('truetype');
+  font-family: 'FiraSansMedium';
+  src: url('./assets/fonts/FiraSans-Medium.otf');
 }
 
 @font-face {
-  font-family: 'Rubik-Bold';
-  src: url('./assets/fonts/Rubik-Bold.ttf') format('truetype');
+  font-family: 'FiraSansBold';
+  src: url('./assets/fonts/FiraSans-Bold.otf');
 }
 
 @font-face {
-  font-family: 'Rubik-Regular';
-  src: url('./assets/fonts/Rubik-Regular.ttf') format('truetype');
+  font-family: 'FiraSansRegular';
+  src: url('./assets/fonts/FiraSans-Regular.otf');
 }
-
-@font-face {
-  font-family: 'Rubik-Medium';
-  src: url('./assets/fonts/Rubik-Medium.ttf') format('truetype');
-}
-
-@font-face {
-font-family: 'Rubik-Bold';
-src: url('./assets/fonts/Rubik-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Rubik-Black';
-  src: url('./assets/fonts/Rubik-Black.ttf') format('truetype');
-}
-
-// @import './fullpage.scss'; 
-
-@-webkit-keyframes slideDown {
-  0% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-@keyframes slideDown {
-  0% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-}
-@-webkit-keyframes slideUp {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-}
-@keyframes slideUp {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%);
-  }
-}
-
 
 p {
   margin: 0;
@@ -184,7 +108,7 @@ html {
   @media (min-width: 320px) and (max-width: 1279px) {
     width: 50px;
     height: 50px;
-    top: 51%;
+    top: 40%;
   }
 }
 
@@ -206,9 +130,8 @@ html {
   @media (min-width: 320px) and (max-width: 1279px) {
     width: 100%;
     margin: 0;
-    top: 40%;
+    top: 20%;
     position: absolute;
-    transform: translateY(-50%);
   }
   
 
@@ -228,14 +151,14 @@ html {
 .gallery-mobile {
   display: none;
 
-  &.modal {
+  &.visible {
     display: flex;
   }
   @media (min-width: 320px) and (max-width: 1279px) {
     // display: flex;
     z-index: 9999;
     position: absolute;
-    top: 53%;
+    top: 42%;
   }
 
   &-item {
@@ -306,9 +229,16 @@ html {
 
 
 .header {
-  transition: all .3s;
+  transition: all .7s;
+  animation: animateHeader 3s;
+  z-index: 999;
   @media (min-width: 1280px) and (max-width: 1919px) {
     width: 80%;
+  }
+
+  &:hover {
+    // animation: animateHeader 1s;
+    // z-index: 0;
   }
 }
 
@@ -332,7 +262,7 @@ html {
 
 .offer {
   font-size: 32px;
-  font-family: 'FiraSansCondensed-Medium', sans-serif;
+  font-family: 'FiraSansMedium', sans-serif;
   text-transform: uppercase;
   color: #fff;
   &__yellow {
@@ -395,12 +325,8 @@ html {
       width: 140px;
       height: 222px;
       &:first-of-type {
-        // @media (min-width: 320px) and (max-width: 1279px) {
           margin-right: 5px;
-          // background-image: url("./assets/images/mobile_card.png");
-        // }
       }
-      // background-image: url("./assets/images/mobile_card.png");
     }
 
     @media (min-width: 1280px) and (max-width: 1919px) {
@@ -424,6 +350,7 @@ html {
     color: #fff;
     font-size: 24px;
     text-transform: uppercase;
+    font-family: 'FiraSansBold' , sans-serif;
 
     @media (min-width: 320px) and (max-width: 1279px) {
       font-size: 18px;
@@ -437,6 +364,7 @@ html {
     color: #fff;
     font-size: 30px;
     text-transform: uppercase;
+    font-family: 'FiraSansBold' , sans-serif;
 
     @media (min-width: 320px) and (max-width: 1279px) {
       font-size: 24px;
@@ -452,6 +380,7 @@ html {
     font-size: 18px;
     margin-top: 22px;
     text-transform: uppercase;
+    font-family: 'FiraSansMedium', sans-serif;
     @media (min-width: 320px) and (max-width: 1279px) {
       margin-top: auto;
       font-size: 13px;
@@ -508,6 +437,7 @@ html {
     &__text {
       text-transform: uppercase;
       font-size: 18px;
+      font-family: 'FiraSansMedium', sans-serif;
     }
 
     @media (min-width: 320px) and (max-width: 1279px) {
@@ -578,7 +508,6 @@ html {
       }
       &.video-link {
         width: 100%;
-        // margin-bottom: 10px;
         height: 158px;
       }
     }
@@ -611,6 +540,7 @@ html {
     color: #9e9a9d;
     font-size: 14px;
     margin-right: 18px;
+    font-family: 'FiraSansRegular', sans-serif;
     &:last-of-type {
       margin-right: 0;
       @media (min-width: 320px) and (max-width: 1279px) {
@@ -657,4 +587,19 @@ html {
 @keyframes fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+@keyframes animateHeader {
+  0% {
+    z-index: 0;
+    transform: scale(.5) translateY(50%); 
+  }
+  50% {
+    z-index: 0;
+  }
+
+  100% {
+    z-index: 999;
+    transform: scale(1) translateY(0%); 
+  }
 }

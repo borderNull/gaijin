@@ -15,11 +15,13 @@ html
       div.modal__next
       img.modal__image(src=require("./assets/images/gallery/1-big.jpg"))
     img.logo(src=require("./assets/images/logo_classic.png"))
-    img.header(src=require("./assets/images/headers/header_ru.png"))
+    picture.header
+      source(srcset=require("./assets/images/headers/header_ru_m.png") media="(max-width:800px)")
+      img.header(src=require("./assets/images/headers/header_ru.png"))
     div.tower
     p.offer
-      |выбери свой
-      span.offer__yellow бесплатный
+      |выбери свой 
+      span.offer__yellow бесплатный 
       |бонус
     div.gifts
       div.gifts-item

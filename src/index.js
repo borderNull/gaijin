@@ -59,14 +59,6 @@ let isMobile = document.body.clientWidth < 1024;
 
 window.addEventListener('resize', e => {
   const isMobileResized = document.body.clientWidth < 1024;
-
-
-  if (isMobileResized) {
-    header.src = require(`${langs[currentLang].mobileHeader}`);
-  } else {
-    header.src = require(`${langs[currentLang].header}`);
-  }
-
   isMobile = isMobileResized;
 })
 
@@ -86,7 +78,7 @@ modalClose.addEventListener('click', () => {
     modalGallery.style.display = 'none';
     clearStatus();
     gallery.classList.remove('modal');
-    mobileGallery.classList.remove('modal');
+    mobileGallery.classList.remove('visible');
 })
 
 gallery.addEventListener('click', e => setImage(e));
@@ -134,7 +126,7 @@ function setImage(el) {
     }
 
     if (isMobile) {
-      mobileGallery.classList.add('modal');
+      mobileGallery.classList.add('visible');
     }
 
     checkNext(currentIndex);
